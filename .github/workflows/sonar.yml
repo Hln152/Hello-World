@@ -7,3 +7,4 @@
     args: >
       -Dsonar.projectKey=Hln152_Hello-World
       -Dsonar.organization=Hln152
+      # final run
