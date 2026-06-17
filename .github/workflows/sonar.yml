@@ -1,10 +1,27 @@
-- name: SonarCloud Scan
-  uses: SonarSource/sonarqube-scan-action@v2
-  env:
-    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-    SONAR_HOST_URL: https://sonarcloud.io
-  with:
-    args: >
-      -Dsonar.projectKey=Hln152_Hello-World
-      -Dsonar.organization=Hln152
-      # final run
+name: SonarCloud
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+        with:
+          args: >
+            -Dsonar.projectKey=Hln152_Hello-World
+            -Dsonar.organization=Hln152
+``
